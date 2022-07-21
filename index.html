@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto:wght@100&display=swap"
+        rel="stylesheet">
+    <link rel="Stylesheet" href="mystyle.css">
+    <title>Dictionary</title>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <h1>Dictionary</h1>
+
+        <div class="input-container">
+            <input type="text" id="word" placeholder="Enter a word..." autofocus required>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" onclick="getdata()">Search</button>
+        </div>
+
+        <div id="pro" class="pronunciation"></div>
+        <div id="def" class="definition"></div>
+        <div id="eg" class="example"></div>
+
+    </div>
+
+    <script type="text/javascript">
+        function getdata() {
+            var word = document.getElementById('word').value;
+            fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + word + '')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((myJson) => {
+                    document.getElementById("pro").innerHTML = "Pronunciation : " + myJson[0].phonetics[1].text;
+                    document.getElementById("def").innerHTML = "Definition : " + myJson[0].meanings[0]
+                        .definitions[0].definition;
+                    document.getElementById("eg").innerHTML = "Example : " + myJson[0].meanings[0]
+                        .definitions[0].example;
+                    // })
+                    // .catch(function () {
+                    //     console.log(error);
+                    //     document.getElementById("result").innerHTML = "Please enter a valid word";
+                });
+        }
+    </script>
+
+</body>
+
+</html>

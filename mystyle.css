@@ -1,0 +1,70 @@
+.main-container{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-family: 'Open Sans';
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    margin: auto;
+    margin-top:40px;
+    width:800px;
+    border-radius: 15px;
+}
+
+h1{
+    color: rgb(20, 78, 94);
+    font-size: 55px;
+    font-weight: bold;
+    letter-spacing: 0.4ch;
+    border-radius: 20px;
+}
+
+input{
+    font-family: inherit;
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 10px;
+    border:2px solid black;
+    background: transparent;
+    border-radius: 8px;
+}
+
+button{
+    background-color: rgb(5, 44, 55);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 10px;;
+    padding:15px;
+    margin:30px;
+    width:180px;
+    letter-spacing: 0.3ch;
+}
+
+.pronunciation{
+    font-size: inherit;
+    font-size: 30px;
+    color: rgb(5, 44, 55);
+    padding:8px;
+    margin:5px;
+}
+
+.definition{
+    font-size: inherit;
+    font-size: 30px;
+    color: rgb(5, 44, 55);
+    padding:8px;
+    margin:5px;
+}
+
+.example{
+    font-size: inherit;
+    font-size: 30px;
+    color: rgb(5, 44, 55);
+    padding:8px;
+    margin:2px;
+}
