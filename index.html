@@ -24,9 +24,9 @@
             <button type="submit" onclick="getdata()">Search</button>
         </div>
 
-        <div id="pro" class="pronunciation"></div>
-        <div id="def" class="definition"></div>
-        <div id="eg" class="example"></div>
+        <div id="pro" class="outputs"></div>
+        <div id="def" class="outputs"></div>
+        <div id="eg" class="outputs"></div>
 
     </div>
 
@@ -35,18 +35,24 @@
             var word = document.getElementById('word').value;
             fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + word + '')
                 .then((response) => {
-                    return response.json();
+                    if (response.status == 404) {
+                        document.getElementById("result").innerHTML = "Please enter a valid word";
+                    } else {
+                        return response.json();
+                    }
                 })
                 .then((myJson) => {
-                    document.getElementById("pro").innerHTML = "Pronunciation : " + myJson[0].phonetics[1].text;
-                    document.getElementById("def").innerHTML = "Definition : " + myJson[0].meanings[0]
-                        .definitions[0].definition;
-                    document.getElementById("eg").innerHTML = "Example : " + myJson[0].meanings[0]
-                        .definitions[0].example;
-                    // })
-                    // .catch(function () {
-                    //     console.log(error);
-                    //     document.getElementById("result").innerHTML = "Please enter a valid word";
+                    if (myJson != undefined) {
+                        document.getElementById("pro").innerHTML = "Pronunciation : " + myJson[0].phonetics[1].text;
+                        document.getElementById("def").innerHTML = "Definition : " + myJson[0].meanings[0]
+                            .definitions[0].definition;
+                        document.getElementById("eg").innerHTML = "Example : " + myJson[0].meanings[0]
+                            .definitions[0].example;
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    document.getElementById("pro").innerHTML = "Please enter a valid word";
                 });
         }
     </script>
